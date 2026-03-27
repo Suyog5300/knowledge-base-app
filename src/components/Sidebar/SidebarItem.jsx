@@ -1,6 +1,7 @@
 const PRIMARY = '#4F46E5';
 const ACTIVE_BG = '#edecfa';
 
+// eslint-disable-next-line no-unused-vars
 const SidebarItem = ({ icon: Icon, label, active = false, onClick }) => {
   return (
     <button
