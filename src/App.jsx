@@ -1,20 +1,42 @@
-/* File: src/App.jsx */
-
-import Header from './components/Header/Header';
-import Sidebar from './components/Sidebar/Sidebar';
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+// import KnowledgeBase from './components/KnowledgeBase/KnowledgeBase';
 
 function App() {
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
-      {/* Top Header - full width */}
-      <Header />
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+        background: "#f9fafb",
+      }}
+    >
+      {/* Header sticks at top, full width */}
+      <div
+        style={{
+          marginTop: 6,
+          width: "99%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          border: "1px solid #e5e7eb",
+        }}
+      >
+        <Header />
+      </div>
 
-      {/* Body - sidebar + main content */}
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
-        <main className="flex-1 overflow-y-auto p-6">
-          <h1 className="text-2xl font-semibold text-text-primary">Knowledge Base</h1>
-        </main>
+      {/* Below header: sidebar + main scroll together */}
+      <div
+        style={{
+          display: "flex",
+          flex: 1,
+          overflow: "hidden",
+          minHeight: 0,
+        }}
+      >
+        <Sidebar activeItem="Knowledge Base" />
+        {/* <KnowledgeBase /> */}
       </div>
     </div>
   );

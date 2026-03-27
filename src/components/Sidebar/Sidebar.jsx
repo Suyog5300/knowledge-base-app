@@ -31,8 +31,8 @@ const Sidebar = ({ activeItem = 'Knowledge Base' }) => {
 
   return (
     <aside style={{
-      width: 176,
-      minWidth: 176,
+      width: 200,
+      minWidth: 200,
       background: 'white',
       borderRight: '1px solid #e5e7eb',
       overflowY: 'auto',

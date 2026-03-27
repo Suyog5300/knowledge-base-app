@@ -1,4 +1,4 @@
-const PRIMARY = '#4F46E5';
+const PRIMARY = '#b0b0b0';
 
 const SidebarSection = ({ title, children }) => {
   return (

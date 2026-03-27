@@ -1,4 +1,5 @@
 const PRIMARY = '#4F46E5';
+const ACTIVE_BG = '#edecfa';
 
 const SidebarItem = ({ icon: Icon, label, active = false }) => {
   return (
@@ -7,23 +8,25 @@ const SidebarItem = ({ icon: Icon, label, active = false }) => {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        gap: 9,
-        padding: '7px 10px',
+        gap: 10,
+        padding: '7px 12px 7px 10px',
         borderRadius: 7,
         border: 'none',
+        borderLeft: active ? `3px solid ${PRIMARY}` : '3px solid transparent',
         cursor: 'pointer',
-        background: active ? PRIMARY : 'transparent',
-        color: active ? 'white' : '#374151',
+        background: active ? ACTIVE_BG : 'transparent',
+        color: active ? PRIMARY : '#374151',
         fontSize: 13,
-        fontWeight: active ? 500 : 400,
+        fontWeight: active ? 600 : 400,
         textAlign: 'left',
         transition: 'background 0.15s',
         fontFamily: 'inherit',
+        boxSizing: 'border-box',
       }}
-      onMouseEnter={e => { if (!active) e.currentTarget.style.background = '#f1f0fe'; }}
+      onMouseEnter={e => { if (!active) e.currentTarget.style.background = '#f5f5fe'; }}
       onMouseLeave={e => { if (!active) e.currentTarget.style.background = 'transparent'; }}
     >
-      <Icon size={17} strokeWidth={1.8} color={active ? 'white' : '#6b7280'} />
+      <Icon size={17} strokeWidth={1.8} color={active ? PRIMARY : '#6b7280'} />
       <span>{label}</span>
     </button>
   );
