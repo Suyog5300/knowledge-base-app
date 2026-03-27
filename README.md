@@ -101,20 +101,4 @@ npm run build
 npm run preview
 ```
 
----
-
-## Interactions
-
-| Action | Behavior |
-|---|---|
-| Click **Create New** | Opens the modal form |
-| Click **Create** in modal | Closes the modal |
-| Click outside modal / × | Dismisses the modal |
-| Type in Search | Filters cards in real time |
-| Press `⌘K` / `Ctrl+K` | Focuses the search input |
-| Click any sidebar item | Switches active tab |
-| Click non-KB sidebar item | Shows empty state with tab label |
-
----
-
 *Submitted by: [Your Name] — Aventisia Junior Developer Assignment, April 2026*
