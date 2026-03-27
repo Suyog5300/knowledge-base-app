@@ -1,4 +1,5 @@
 import { Bell } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 const SearchIcon = () => (
   <svg width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
@@ -10,16 +11,6 @@ const SearchIcon = () => (
 const ChevronDown = () => (
   <svg width={11} height={11} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2.5} strokeLinecap="round">
     <polyline points="6 9 12 15 18 9" />
-  </svg>
-);
-
-const WorcescapeLogo = () => (
-  <svg width={28} height={28} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx={16} cy={16} r={15} fill="#E8465A" opacity={0.92} />
-    <path
-      d="M10 21C12 14.5 15 12 17.5 12.5C19.5 13 20.5 15.5 20 17.5C19.5 19.5 20.5 20.5 22 19C23 18 23.5 15.5 22.5 13"
-      stroke="white" strokeWidth={2.5} strokeLinecap="round" fill="none"
-    />
   </svg>
 );
 
@@ -42,8 +33,9 @@ const Header = () => {
     }}>
       {/* Logo + badge */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 200 }}>
-        <WorcescapeLogo />
-        <span style={{ color: 'white', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em' }}>Worcespace</span>
+        {/* <WorcescapeLogo /> */}
+        <img src={logo} alt="Logo" style={{ width: 30, height: 30 }} />
+        <span style={{ color: 'white', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em' }}>Worcspace</span>
         <div style={{
           display: 'flex', alignItems: 'center', gap: 4,
           background: '#312e81',
@@ -52,7 +44,7 @@ const Header = () => {
           cursor: 'pointer',
           border: '1px solid rgba(255,255,255,0.12)',
         }}>
-          <span style={{ color: 'white', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap' }}>Worcespace 1</span>
+          <span style={{ color: 'white', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap' }}>Worcspace 1</span>
           <ChevronDown />
         </div>
       </div>

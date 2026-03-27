@@ -5,7 +5,7 @@ import {
 import SidebarItem from './SidebarItem';
 import SidebarSection from './SidebarSection';
 
-const Sidebar = ({ activeItem = 'Knowledge Base' }) => {
+const Sidebar = ({ activeItem = 'Knowledge Base', onItemClick }) => {
   const myProjects = [
     { icon: Bot, label: 'Agents' },
     { icon: Cpu, label: 'AI Models' },
@@ -37,23 +37,24 @@ const Sidebar = ({ activeItem = 'Knowledge Base' }) => {
       borderRight: '1px solid #e5e7eb',
       overflowY: 'auto',
       padding: '12px 8px',
+      zIndex: 1,
     }}>
       <nav>
         <SidebarSection title="MY PROJECTS">
           {myProjects.map(item => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} onClick={() => onItemClick?.(item.label)} />
           ))}
         </SidebarSection>
 
         <SidebarSection title="ORCHESTRATOR">
           {orchestrator.map(item => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} onClick={() => onItemClick?.(item.label)} />
           ))}
         </SidebarSection>
 
         <SidebarSection title="ADMIN">
           {admin.map(item => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} onClick={() => onItemClick?.(item.label)} />
           ))}
         </SidebarSection>
       </nav>

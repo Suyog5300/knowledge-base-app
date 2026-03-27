@@ -1,7 +1,7 @@
 const PRIMARY = '#4F46E5';
 const ACTIVE_BG = '#edecfa';
 
-const SidebarItem = ({ icon: Icon, label, active = false }) => {
+const SidebarItem = ({ icon: Icon, label, active = false, onClick }) => {
   return (
     <button
       style={{
@@ -25,6 +25,7 @@ const SidebarItem = ({ icon: Icon, label, active = false }) => {
       }}
       onMouseEnter={e => { if (!active) e.currentTarget.style.background = '#f5f5fe'; }}
       onMouseLeave={e => { if (!active) e.currentTarget.style.background = 'transparent'; }}
+      onClick={e => { if (!active) e.currentTarget.style.background = ACTIVE_BG; onClick?.(); }}
     >
       <Icon size={17} strokeWidth={1.8} color={active ? PRIMARY : '#6b7280'} />
       <span>{label}</span>
