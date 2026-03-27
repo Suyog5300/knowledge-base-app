@@ -1,50 +1,93 @@
-/* File: src/components/Header/Header.jsx */
+import { Bell } from 'lucide-react';
 
-import { Search, Bell } from 'lucide-react';
+const SearchIcon = () => (
+  <svg width={15} height={15} viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <circle cx={11} cy={11} r={8} />
+    <line x1={21} y1={21} x2={16.65} y2={16.65} />
+  </svg>
+);
+
+const ChevronDown = () => (
+  <svg width={11} height={11} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round">
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
+
+const WorcescapeLogo = () => (
+  <svg width={28} height={28} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx={16} cy={16} r={15} fill="#E8465A" opacity={0.92} />
+    <path
+      d="M10 21C12 14.5 15 12 17.5 12.5C19.5 13 20.5 15.5 20 17.5C19.5 19.5 20.5 20.5 22 19C23 18 23.5 15.5 22.5 13"
+      stroke="white" strokeWidth={2.5} strokeLinecap="round" fill="none"
+    />
+  </svg>
+);
 
 const Header = () => {
   return (
-    <header className="h-14 bg-sidebar-bg flex items-center px-4 border-b border-indigo-900/30">
-      {/* Logo area */}
-      <div className="flex items-center gap-2 min-w-[170px]">
-        {/* Swoosh/Wave Logo */}
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="14" fill="#E8465A" opacity="0.9"/>
-          <path d="M10 20C12 14 15 12 17 12C19 12 20 14 20 16C20 18 21 19 22 18C23 17 23 15 22 13" 
-                stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none"/>
-        </svg>
-        <span className="text-white font-semibold text-base">Worcespace</span>
-        <span className="text-xs text-white bg-green-600 px-2 py-0.5 rounded-full ml-1 whitespace-nowrap flex items-center gap-1">
-          Worcespace 1
-          <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </span>
+    <header style={{
+      height: 52,
+      background: '#1E1B4B',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 16px',
+      flexShrink: 0,
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
+    }}>
+      {/* Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 190 }}>
+        <WorcescapeLogo />
+        <span style={{ color: 'white', fontWeight: 600, fontSize: 15 }}>Worcespace</span>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 4,
+          background: '#15803d', borderRadius: 20,
+          padding: '2px 10px', marginLeft: 4, cursor: 'pointer',
+        }}>
+          <span style={{ color: 'white', fontSize: 11, fontWeight: 500, whiteSpace: 'nowrap' }}>Worcespace 1</span>
+          <ChevronDown />
+        </div>
       </div>
 
-      {/* Search bar - centered */}
-      <div className="flex-1 flex justify-center px-8">
-        <div className="relative w-full max-w-md">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-indigo-300" />
+      {/* Search */}
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '0 32px' }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: 400 }}>
+          <div style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)' }}>
+            <SearchIcon />
+          </div>
           <input
             type="text"
             placeholder="Search..."
-            className="w-full bg-indigo-900/40 text-indigo-100 placeholder-indigo-400 text-sm rounded-lg pl-9 pr-12 py-2 border border-indigo-700/30 focus:outline-none focus:border-primary/60 focus:ring-1 focus:ring-primary/30 transition-colors"
+            style={{
+              width: '100%',
+              background: 'rgba(255,255,255,0.08)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              borderRadius: 8,
+              color: '#c7d2fe',
+              padding: '6px 42px 6px 34px',
+              fontSize: 13,
+              outline: 'none',
+              fontFamily: 'inherit',
+            }}
           />
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-indigo-400 bg-indigo-800/60 px-1.5 py-0.5 rounded border border-indigo-700/40">
-            ⌘K
-          </kbd>
+          <kbd style={{
+            position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
+            fontSize: 10, color: '#818cf8', background: 'rgba(255,255,255,0.08)',
+            padding: '4px 4px', borderRadius: 4,
+            border: '1px solid rgba(255,255,255,0.12)', fontFamily: 'inherit',
+          }}>⌘ K</kbd>
         </div>
       </div>
 
-      {/* Right side */}
-      <div className="flex items-center gap-3">
-        <button className="text-indigo-300 hover:text-white transition-colors relative">
+      {/* Right */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <button style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#a5b4fc', display: 'flex', alignItems: 'center', padding: 6, borderRadius: 6 }}>
           <Bell size={20} />
         </button>
-        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-semibold">
-          GK
-        </div>
+        <div style={{
+          width: 32, height: 32, borderRadius: '50%', background: '#4F46E5',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          color: 'white', fontSize: 11, fontWeight: 600, cursor: 'pointer',
+        }}>GK</div>
       </div>
     </header>
   );

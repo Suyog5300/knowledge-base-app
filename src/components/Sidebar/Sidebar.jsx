@@ -1,23 +1,11 @@
 import {
-  Bot,
-  Cpu,
-  BookOpen,
-  Globe,
-  Server,
-  ListOrdered,
-  Zap,
-  Briefcase,
-  Play,
-  Lock,
-  Database,
-  Key,
-  Users,
-  Plug,
+  Bot, Cpu, BookOpen, Globe, Server, ListOrdered,
+  Zap, Briefcase, Play, Lock, Database, Key, Users, Plug,
 } from 'lucide-react';
 import SidebarItem from './SidebarItem';
 import SidebarSection from './SidebarSection';
 
-const Sidebar = () => {
+const Sidebar = ({ activeItem = 'Knowledge Base' }) => {
   const myProjects = [
     { icon: Bot, label: 'Agents' },
     { icon: Cpu, label: 'AI Models' },
@@ -32,7 +20,7 @@ const Sidebar = () => {
     { icon: Briefcase, label: 'Jobs' },
     { icon: Play, label: 'Executions' },
     { icon: Lock, label: 'Vault' },
-    { icon: Database, label: 'Knowledge Base', active: true },
+    { icon: Database, label: 'Knowledge Base' },
     { icon: Key, label: 'Key Store' },
   ];
 
@@ -42,23 +30,30 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-[170px] min-w-[170px] bg-white border-r border-gray-200 overflow-y-auto">
-      <nav className="px-3 py-4 space-y-5">
+    <aside style={{
+      width: 176,
+      minWidth: 176,
+      background: 'white',
+      borderRight: '1px solid #e5e7eb',
+      overflowY: 'auto',
+      padding: '12px 8px',
+    }}>
+      <nav>
         <SidebarSection title="MY PROJECTS">
-          {myProjects.map((item) => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.active} />
+          {myProjects.map(item => (
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
           ))}
         </SidebarSection>
 
         <SidebarSection title="ORCHESTRATOR">
-          {orchestrator.map((item) => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.active} />
+          {orchestrator.map(item => (
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
           ))}
         </SidebarSection>
 
         <SidebarSection title="ADMIN">
-          {admin.map((item) => (
-            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.active} />
+          {admin.map(item => (
+            <SidebarItem key={item.label} icon={item.icon} label={item.label} active={item.label === activeItem} />
           ))}
         </SidebarSection>
       </nav>

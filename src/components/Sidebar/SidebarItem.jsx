@@ -1,14 +1,29 @@
+const PRIMARY = '#4F46E5';
+
 const SidebarItem = ({ icon: Icon, label, active = false }) => {
   return (
     <button
-      className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150
-        ${
-          active
-            ? 'bg-primary text-white'
-            : 'text-gray-700 hover:bg-gray-100'
-        }`}
+      style={{
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 9,
+        padding: '7px 10px',
+        borderRadius: 7,
+        border: 'none',
+        cursor: 'pointer',
+        background: active ? PRIMARY : 'transparent',
+        color: active ? 'white' : '#374151',
+        fontSize: 13,
+        fontWeight: active ? 500 : 400,
+        textAlign: 'left',
+        transition: 'background 0.15s',
+        fontFamily: 'inherit',
+      }}
+      onMouseEnter={e => { if (!active) e.currentTarget.style.background = '#f1f0fe'; }}
+      onMouseLeave={e => { if (!active) e.currentTarget.style.background = 'transparent'; }}
     >
-      <Icon size={18} strokeWidth={1.8} />
+      <Icon size={17} strokeWidth={1.8} color={active ? 'white' : '#6b7280'} />
       <span>{label}</span>
     </button>
   );
