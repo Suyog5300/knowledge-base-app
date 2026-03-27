@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start /B npx vite preview --port 4173)",
+      "Bash(powershell -Command \":*)"
+    ]
+  }
+}

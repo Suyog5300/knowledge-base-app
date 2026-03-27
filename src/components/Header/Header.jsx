@@ -1,4 +1,4 @@
-import { Bell } from 'lucide-react';
+import { Bell, Menu } from 'lucide-react';
 import logo from '../../assets/logo.png';
 
 const SearchIcon = () => (
@@ -14,7 +14,7 @@ const ChevronDown = () => (
   </svg>
 );
 
-const Header = () => {
+const Header = ({ onMenuToggle }) => {
   return (
     <header style={{
       height: 56,
@@ -22,7 +22,7 @@ const Header = () => {
       background: '#1E1B4B',
       display: 'flex',
       alignItems: 'center',
-      padding: '0 20px',
+      padding: '0 16px',
       flexShrink: 0,
       width: '100%',
       position: 'sticky',
@@ -30,12 +30,30 @@ const Header = () => {
       zIndex: 100,
       boxSizing: 'border-box',
       borderRadius: 8,
+      gap: 8,
     }}>
-      {/* Logo + badge */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 200 }}>
-        {/* <WorcescapeLogo /> */}
-        <img src={logo} alt="Logo" style={{ width: 30, height: 30 }} />
-        <span style={{ color: 'white', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em' }}>Worcspace</span>
+      {/* Hamburger — mobile only */}
+      <button
+        onClick={onMenuToggle}
+        className="md:hidden"
+        style={{
+          background: 'transparent', border: 'none', cursor: 'pointer',
+          color: '#a5b4fc', display: 'flex', alignItems: 'center',
+          padding: '6px', borderRadius: 6, flexShrink: 0,
+        }}
+      >
+        <Menu size={20} />
+      </button>
+
+      {/* Logo + workspace badge */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+        <img src={logo} alt="Logo" style={{ width: 28, height: 28 }} />
+        <span
+          className="hidden sm:inline"
+          style={{ color: 'white', fontWeight: 600, fontSize: 15, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}
+        >
+          Worcspace
+        </span>
         <div style={{
           display: 'flex', alignItems: 'center', gap: 4,
           background: '#312e81',
@@ -43,14 +61,15 @@ const Header = () => {
           padding: '3px 10px',
           cursor: 'pointer',
           border: '1px solid rgba(255,255,255,0.12)',
+          flexShrink: 0,
         }}>
           <span style={{ color: 'white', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap' }}>Worcspace 1</span>
           <ChevronDown />
         </div>
       </div>
 
-      {/* Search - centered */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '0 40px' }}>
+      {/* Search — hidden on mobile */}
+      <div className="hidden md:flex" style={{ flex: 1, justifyContent: 'center', padding: '0 24px' }}>
         <div style={{ position: 'relative', width: '100%', maxWidth: 420 }}>
           <div style={{ position: 'absolute', left: 11, top: '50%', transform: 'translateY(-50%)' }}>
             <SearchIcon />
@@ -81,7 +100,7 @@ const Header = () => {
       </div>
 
       {/* Right actions */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 'auto' }}>
         <button style={{
           background: 'transparent', border: 'none', cursor: 'pointer',
           color: '#a5b4fc', display: 'flex', alignItems: 'center',
@@ -90,10 +109,10 @@ const Header = () => {
           <Bell size={19} />
         </button>
         <div style={{
-          width: 34, height: 34, borderRadius: '50%', background: '#4F46E5',
+          width: 32, height: 32, borderRadius: '50%', background: '#4F46E5',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: 'white', fontSize: 12, fontWeight: 600, cursor: 'pointer',
-          border: '2px solid rgba(255,255,255,0.15)',
+          color: 'white', fontSize: 11, fontWeight: 600, cursor: 'pointer',
+          border: '2px solid rgba(255,255,255,0.15)', flexShrink: 0,
         }}>GK</div>
       </div>
     </header>

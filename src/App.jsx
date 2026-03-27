@@ -14,6 +14,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const filteredItems = knowledgeBases.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -21,6 +22,7 @@ function App() {
 
   const startIdx = (currentPage - 1) * rowsPerPage;
   const paginatedItems = filteredItems.slice(startIdx, startIdx + rowsPerPage);
+
   return (
     <div
       style={{
@@ -31,7 +33,7 @@ function App() {
         background: "#f9fafb",
       }}
     >
-      {/* Header sticks at top, full width */}
+      {/* Header */}
       <div
         style={{
           marginTop: 6,
@@ -41,20 +43,32 @@ function App() {
           border: "1px solid #e5e7eb",
         }}
       >
-        <Header />
+        <Header onMenuToggle={() => setSidebarOpen((o) => !o)} />
       </div>
 
-      {/* Below header: sidebar + main scroll together */}
-      <div
-        style={{
-          display: "flex",
-          flex: 1,
-          overflow: "hidden",
-          minHeight: 0,
-        }}
-      >
-        <Sidebar activeItem={activeItem} onItemClick={setActiveItem} />
-        <main className="flex-1 overflow-y-auto p-6 flex flex-col">
+      {/* Below header: sidebar + main */}
+      <div style={{ display: "flex", flex: 1, overflow: "hidden", minHeight: 0, position: "relative" }}>
+
+        {/* Mobile backdrop */}
+        {sidebarOpen && (
+          <div
+            onClick={() => setSidebarOpen(false)}
+            className="md:hidden"
+            style={{
+              position: "fixed", inset: 0,
+              background: "rgba(0,0,0,0.35)",
+              zIndex: 40,
+            }}
+          />
+        )}
+
+        <Sidebar
+          activeItem={activeItem}
+          onItemClick={(label) => { setActiveItem(label); setSidebarOpen(false); }}
+          isOpen={sidebarOpen}
+        />
+
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 flex flex-col min-w-0">
           {activeItem === 'Knowledge Base' ? (
             <>
               <ContentHeader
@@ -84,7 +98,7 @@ function App() {
           )}
         </main>
       </div>
-          {/* Create New Modal */}
+
       <CreateKnowledgeBaseModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

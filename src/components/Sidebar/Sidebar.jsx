@@ -5,7 +5,7 @@ import {
 import SidebarItem from './SidebarItem';
 import SidebarSection from './SidebarSection';
 
-const Sidebar = ({ activeItem = 'Knowledge Base', onItemClick }) => {
+const Sidebar = ({ activeItem = 'Knowledge Base', onItemClick, isOpen }) => {
   const myProjects = [
     { icon: Bot, label: 'Agents' },
     { icon: Cpu, label: 'AI Models' },
@@ -30,15 +30,23 @@ const Sidebar = ({ activeItem = 'Knowledge Base', onItemClick }) => {
   ];
 
   return (
-    <aside style={{
-      width: 200,
-      minWidth: 200,
-      background: 'white',
-      borderRight: '1px solid #e5e7eb',
-      overflowY: 'auto',
-      padding: '12px 8px',
-      zIndex: 1,
-    }}>
+    <aside
+      className={[
+        // Mobile: fixed drawer sliding in from left
+        'fixed top-0 left-0 h-full z-50 transition-transform duration-300',
+        isOpen ? 'translate-x-0' : '-translate-x-full',
+        // Desktop: static, always visible, no transform
+        'md:static md:translate-x-0 md:z-auto md:h-auto md:transition-none',
+      ].join(' ')}
+      style={{
+        width: 200,
+        minWidth: 200,
+        background: 'white',
+        borderRight: '1px solid #e5e7eb',
+        overflowY: 'auto',
+        padding: '12px 8px',
+      }}
+    >
       <nav>
         <SidebarSection title="MY PROJECTS">
           {myProjects.map(item => (

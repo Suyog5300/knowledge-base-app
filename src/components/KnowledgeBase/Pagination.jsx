@@ -6,15 +6,15 @@ const Pagination = ({ totalRows, rowsPerPage, currentPage, onPageChange, onRowsP
   const totalPages = Math.max(1, Math.ceil(totalRows / rowsPerPage));
 
   return (
-    <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 text-sm text-text-muted">
-      {/* Left - row count */}
+    <div className="flex flex-wrap items-center justify-between gap-2 mt-auto pt-4 border-t border-gray-200 text-sm text-text-muted">
+      {/* Row count */}
       <div>
         <span>{totalRows} rows</span>
       </div>
 
-      {/* Center - rows per page */}
+      {/* Rows per page */}
       <div className="flex items-center gap-2">
-        <span>Rows per page</span>
+        <span className="hidden sm:inline">Rows per page</span>
         <select
           value={rowsPerPage}
           onChange={(e) => onRowsPerPageChange(Number(e.target.value))}
@@ -26,10 +26,13 @@ const Pagination = ({ totalRows, rowsPerPage, currentPage, onPageChange, onRowsP
         </select>
       </div>
 
-      {/* Right - page navigation */}
+      {/* Page navigation */}
       <div className="flex items-center gap-1">
-        <span className="mr-2">
+        <span className="mr-1 hidden sm:inline">
           page {currentPage} of {totalPages}
+        </span>
+        <span className="mr-1 sm:hidden text-xs">
+          {currentPage}/{totalPages}
         </span>
 
         <button
